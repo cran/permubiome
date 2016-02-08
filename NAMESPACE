@@ -1,0 +1,5 @@
+exportPattern("^[[:alpha:]]+")
+importFrom("stats", "df", "median", "p.adjust", "pnorm", "sd")
+importFrom("utils", "head", "read.table", "write.table")
+importFrom("ggplot2", "ggplot", "ggsave", "geom_boxplot", "ggtitle", "ylab", "xlab", "theme", 
+"element_text", "geom_jitter", "position_jitter", "last_plot", "aes")
