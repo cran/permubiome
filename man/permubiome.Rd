@@ -21,7 +21,7 @@ The permubiome R package was created to perform permutation-based non-parametric
 Maintainer: \packageMaintainer{permubiome}
 }
 \references{
-Benitez-Paez A. & Sanz Y. (2015). Permubiome: an R package to perform permutation based test for biomarker discovery in microbiome analyses. In press.
+Benitez-Paez A. & Sanz Y. (2016). Permubiome: an R package to perform permutation based test for biomarker discovery in microbiome analyses. In press.
 }
 
 \keyword{ permubiome }

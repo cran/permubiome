@@ -44,7 +44,7 @@ function ()
             geom_boxplot(notch = F, outlier.colour = "blue", 
                 outlier.shape = 1, outlier.size = 3, binaxis = "y", 
                 stackdir = "center", dotsize = 3) + ggtitle(category) + 
-            ylab("Normalized read proportion") + xlab("Clasess") + 
+            ylab("Normalized read proportion") + xlab("Classes") + 
             theme(axis.text = element_text(size = 12), axis.title = element_text(size = 16, 
                 face = "bold")) + geom_jitter(position = position_jitter(width = 0, 
             height = 0))

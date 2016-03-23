@@ -20,7 +20,7 @@ print(paste("As you declare no categories, the first one of your dataset is plot
 }
 else
 {
-ggplot(df_norm, aes(Class, df_norm[,category]), environment = environment())+geom_boxplot(notch=F, outlier.colour="blue", outlier.shape=1, outlier.size=3, binaxis="y", stackdir="center", dotsize=3)+ggtitle(category)+ylab("Normalized read proportion")+xlab("Clasess")+theme(axis.text=element_text(size=12), axis.title=element_text(size=16,face="bold"))+geom_jitter(position=position_jitter(width=0, height=0))
+ggplot(df_norm, aes(Class, df_norm[,category]), environment = environment())+geom_boxplot(notch=F, outlier.colour="blue", outlier.shape=1, outlier.size=3, binaxis="y", stackdir="center", dotsize=3)+ggtitle(category)+ylab("Normalized read proportion")+xlab("Classes")+theme(axis.text=element_text(size=12), axis.title=element_text(size=16,face="bold"))+geom_jitter(position=position_jitter(width=0, height=0))
 output <- readline("Do you want an output file (yes/no)? : ")
 if (substr(output, 1, 1) == "y"){
 extension <- readline("What extension do you prefer fo the output plot (ps, pdf, jpeg, tiff, png, bmp )? : ")
