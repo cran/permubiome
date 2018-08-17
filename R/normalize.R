@@ -1,8 +1,13 @@
 normalize <-
-function (numz = 0.5, method = 1)
+function (prevalence = 0.3, method = 1)
 {
+
+#Loading data
 load("permubiome.RData")
 df_norm<-df
+REFERENCE<-REFERENCE
+
+#Method selection and normalization
 if (method == 1){
 y <- array(, nrow(df_norm))
 for (j in 1:nrow(df_norm)){
@@ -14,13 +19,13 @@ df_norm[m,l]<-round((df_norm[m,l]/y[m])*1000000, digits=0)
 }
 }
 for (i in ncol(df_norm):3) {
-if (sum(df_norm[,i] == "0") >= (nrow(df_norm)*numz)) {
+if (sum(df_norm[,i] == "0") >= (nrow(df_norm) * (1 - prevalence))) {
 df_norm[,i]<-NULL
 }
 }
 } else if (method == 2){
 for (i in ncol(df_norm):3) {
-if (sum(df_norm[,i] == 0) >= (nrow(df_norm)*numz)) {
+if (sum(df_norm[,i] == 0) >= (nrow(df_norm) * (1 - prevalence))) {
 df_norm[,i]<-NULL
 }
 }
@@ -39,7 +44,7 @@ df_norm[b,a] <- round((df_norm[b,a]*y[b]), digits=0)
 }
 } else if (method == 3){
 for (i in ncol(df_norm):3) {
-if (sum(df_norm[,i] == 0) >= (nrow(df_norm)*numz)) {
+if (sum(df_norm[,i] == 0) >= (nrow(df_norm) * (1 - prevalence))) {
 df_norm[,i]<-NULL
 }
 }
@@ -71,5 +76,5 @@ print(paste("Your dataset was not normalized according to method option: 0"))
 } else { print(paste("Select and appropiate method for normalization: 1 ('proportions'), 2 ('anders'), 3('paulson'), or 0 ('none')"))
 }
 print(paste("Your normalized data now contains:", ncol(df_norm)-2, "normalize categories ready to analize" ))
-save(df_norm, file="permubiome.RData")
+save(df, df_norm, REFERENCE, file="permubiome.RData")
 }

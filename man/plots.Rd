@@ -13,7 +13,7 @@ plots()
 When executed, the name of the feature as well as the different output options will be prompted.
 }
 \references{
-Benitez-Paez A. & Sanz Y. (2015). Permubiome: an R package to perform permutation based test for biomarker discovery in microbiome analyses. In press.
+Benitez-Paez A. 2018. Permubiome: an R package to perform permutation based test for biomarker discovery in microbiome analyses. [https://cran.r-project.org]
 }
 \author{
 Alfonso Benitez-Paez

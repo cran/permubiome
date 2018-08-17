@@ -1,14 +1,16 @@
 get.data <-
 function()
 {
+#Getting input from user
 DATA <- readline("Type the name of your data set : ")
 if (DATA == ""){
-tb<-read.table(system.file("extdat", "DATA_1", package="permubiome"), header=T, sep="\t")
+tb<-read.table(system.file("extdat", "DATA_2", package="permubiome"), header=T, sep="\t")
 print(paste("As you declare no input file, the permubiome test data was loaded" ))
 save(tb, file = "permubiome.RData")
 }
 else
 {
+#Evaluating data format
 FORMAT <- readline("Type the format of your data set (PERMUBIOME or BIOM): ")
 if(FORMAT == "PERMUBIOME"){
 tb<-read.table(DATA, header=T, sep="\t")
@@ -33,8 +35,10 @@ load("permubiome.RData")
 df<-as.data.frame(tb)
 classes<-levels(df$Class)
 samples<-nrow(df)
+#Parsing reference and cases samples
 print(paste("Your data file contains:", samples, "samples" ))
 print(paste("The classes in your data file are:", classes[1], "and", classes[2]))
+REFERENCE <- readline("Which one of the above classes detected is your CONTROL/REFERENCE group: ")
 print(paste("The number of different categories to compare are:", (ncol(tb)-2) ))
-save(df, file = "permubiome.RData")
+save(DATA, df, REFERENCE, classes, file = "permubiome.RData")
 }
