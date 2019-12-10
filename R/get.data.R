@@ -11,7 +11,7 @@ save(tb, file = "permubiome.RData")
 else
 {
 #Evaluating data format
-FORMAT <- readline("Type the format of your data set (PERMUBIOME or BIOM): ")
+FORMAT <- readline("Type the format of your data set (PERMUBIOME or COLUMN): ")
 if(FORMAT == "PERMUBIOME"){
 tb<-read.table(DATA, header=T, sep="\t")
 save(tb, file = "permubiome.RData")

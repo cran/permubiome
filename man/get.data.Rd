@@ -17,7 +17,7 @@ sampleC    classX     counts(C1)      counts(C2)      counts(Cn)      ...
 sampleD    classY     counts(D1)      counts(D2)      counts(Dn)      ...
 }
 
-From the version 1.1 on you will be able to load your data as BIOM-like format, 
+From the version 1.1 on you will be able to load your data as COLUMN format, 
 just adding the "Class" information in the second row as follows:
 
 \preformatted{
@@ -36,7 +36,7 @@ feature(n)    counts(An)     counts(Bn)     counts(Cn)     counts(Dn)     ...
 get.data()
 }
 \references{
-Benitez-Paez A. 2018. Permubiome: an R package to perform permutation based test for biomarker discovery in microbiome analyses. [https://cran.r-project.org]
+Benitez-Paez A. 2019. Permubiome: an R package to perform permutation based test for biomarker discovery in microbiome analyses. [https://cran.r-project.org]
 }
 \author{
 Alfonso Benitez-Paez
@@ -53,7 +53,7 @@ function ()
         save(tb, file = "permubiome.RData")
     }
     else {
-        FORMAT <- readline("Type the format of your data set (PERMUBIOME or BIOM): ")
+        FORMAT <- readline("Type the format of your data set (PERMUBIOME or COLUMN): ")
         if (FORMAT == "PERMUBIOME") {
             tb <- read.table(DATA, header = T, sep = "\t")
             save(tb, file = "permubiome.RData")

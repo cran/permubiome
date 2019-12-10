@@ -4,7 +4,7 @@
 Permutation-based non-parametric analysis to infer differential abundance of features between groups.
 }
 \description{
-This function performs multiple simulations for every feature present in your dataset. All observations are randomly distributed between groups and the median's differences are calculated for all simulations. Differences calculated from simulations are fitted to the normal distribution, Z-scores are obtained, and the respective probability to reject the null hypothesis is then calculated. A multiple testing correction based on Benjamini-Hochberg method is done to accurately discover the biomarker associated with your dataset classes. FDR threshold for differential abundance can be set at 0.1.
+This function performs multiple simulations for every feature present in your dataset. All observations are randomly distributed between groups and the median's differences are calculated for all simulations. Differences calculated from simulations are fitted to the normal distribution, Z-scores are obtained, and the respective probability to reject the null hypothesis is then calculated. A multiple testing correction based on Benjamini-Hochberg method is done to uncover the biomarkers associated with your dataset classes. FDR threshold for differential abundance can be set at 0.1.
 }
 \usage{
 permutation(nperm = 1000, write.output = TRUE)
@@ -18,7 +18,7 @@ When \emph{TRUE} (as default), a sorted output file is generated and stored in t
 }
 }
 \references{
-Benitez-Paez A. 2018. Permubiome: an R package to perform permutation based test for biomarker discovery in microbiome analyses. [https://cran.r-project.org]
+Benitez-Paez A. 2019. Permubiome: an R package to perform permutation based test for biomarker discovery in microbiome analyses. [https://cran.r-project.org]
 }
 \author{
 Alfonso Benitez-Paez

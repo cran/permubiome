@@ -64,15 +64,3 @@ distance_matrix[,7] <- (as.numeric(distance_matrix[,6]) - mean(as.numeric(distan
 selected_features<-subset(distance_matrix, abs(as.numeric(distance_matrix[,6])) < quantile(as.numeric(distance_matrix[,6]),0.91))
 save(df, df_norm, REFERENCE, classes, distance_matrix, selected_features, file="permubiome.RData")
 }
-
-
-
-
-
-
-
-
-
-
-
-

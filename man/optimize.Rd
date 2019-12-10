@@ -4,13 +4,13 @@
 Optimization for detection of features with larger variation between classes
 }
 \description{
-This function is the previous step to the permutation test and it optimizes the detection of features differentially distributed between classes. The intra- and inter-classes distances are calculated with log-transformed data and then a ratio test is done to maximize the variation between classes. This pre-processing penalizes the microbiome features with a larger intra-class and lower inter-class variation, which would interfere with the statistical estimations to do in during the permutation test.
+This function is the previous step to the permutation test and it optimizes the detection of features differentially distributed between classes. The intra- and inter-classes distances are calculated with log-transformed data and then a ratio test is done to maximize the variation between classes. This pre-processing penalizes the microbiome features with a larger intra-class and lower inter-class variation, which would interfere with the statistical estimations to executed during the permutation test.
 }
 \usage{
 optimize()
 }
 \references{
-Benitez-Paez A. 2018. Permubiome: an R package to perform permutation based test for biomarker discovery in microbiome analyses. [https://cran.r-project.org]
+Benitez-Paez A. 2019. Permubiome: an R package to perform permutation based test for biomarker discovery in microbiome analyses. [https://cran.r-project.org]
 }
 \author{
 Alfonso Benitez-Paez
