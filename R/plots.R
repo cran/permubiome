@@ -47,7 +47,7 @@ p2<-ggplot(prevalence_table, aes(x=names, y=prevalence, fill=names, width=0.75))
 	guides(fill=FALSE)+
 	ggtitle(paste("", "", sep=" "))+
 	theme(plot.title=element_text(size=24, face="bold"))+
-	xlab("Prevalence (percentage)")+
+	ylab("Prevalence (%)")+
 	theme(axis.title.y=element_blank(), axis.text.y=element_blank(),axis.text.x=element_text(size=12),axis.title=element_text(size=16,face="bold"))+
 	theme(plot.margin = unit(c(0.25,0.25,0.25,0.25), "cm"))+
 	ylim(0,100)
