@@ -1,7 +1,6 @@
 permutation <-
 function (nperm = 1000, write.output = TRUE) 
 {
-
 #Loading data
 Class<-NULL
 load("permubiome.RData")

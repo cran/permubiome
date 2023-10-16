@@ -7,7 +7,7 @@ Executing estimation statistics based on bootstrap-coupled approach
 Assessing the size effect on selected microbiome features found to be differentially abundant between classes. This analysis is based on the Data Analysis using Bootstrap-Coupled Estimation (dabestr) R package and gives you the option to create Gardner-Altman estimation plots individually all features found to be differentially presented in your dataset.
 }
 \usage{
-size.effect(category = "", replicates = 5000, n.seed = 12345, 
+size.effect(category = "", replicates = 5000, 
 paired = FALSE, plot.file = "tiff", id.pairs = NULL)
 }
 \arguments{
@@ -16,9 +16,6 @@ Name of the microbiome feature, which differential abundance between classes wil
 }
   \item{replicates}{
 The number of bootstrap resamples that have to be generated. Integer, default 5000. 
-}
-  \item{n.seed}{
-This specifies the seed used to set the random number generator. Setting a seed ensures that the bootstrap confidence intervals for the same data will remain stable over separate runs/calls of this function. Integer, default 12345. 
 }
   \item{paired}{
 If TRUE, the two groups are treated as paired samples, please add an extra column (id.pairs) to parse identity of the datapoint. Default FALSE, the control_group group is treated as pre-intervention and the test_group group is considered post-intervention. 
@@ -34,7 +31,7 @@ Column name for information to parse identity of the datapoint in case of paired
 Be careful to type the "category" correctly to be analyzed in order to that matches with the table contained information.
 }
 \references{
-Benitez-Paez A. 2020. Permubiome: an R package to perform permutation based test for biomarker discovery in microbiome analyses. [https://cran.r-project.org].
+Benitez-Paez A. 2023. Permubiome: an R package to perform permutation based test for biomarker discovery in microbiome analyses. [https://cran.r-project.org].
 Benitez-Paez A, et al. mSystems. 2020;5:e00857-19. doi: 10.1128/mSystems.00857-19.
 }
 \author{
@@ -42,13 +39,14 @@ Alfonso Benitez-Paez
 }
 \examples{
 ## The function is currently defined as
-function (category = "", replicates = 5000, n.seed = 12345, 
+function (category = "", replicates = 5000, 
     paired = FALSE, plot.file = "tiff", id.pairs = NULL)
 {
     Class <- NULL
     ref <- NULL
     loadNamespace("dabestr")
     loadNamespace("rlang")
+    loadNamespace("dplyr")
     load("permubiome.RData")
     df_norm <- df_norm
     if (paired == TRUE) {
@@ -63,8 +61,9 @@ function (category = "", replicates = 5000, n.seed = 12345,
         classes[2] <- classes[1]
         classes[1] <- REFERENCE
     }
-    prepare.stats <- dabest(df_norm, Class, category, paired = paired, 
-        idx = c(classes[1], classes[2]), id.column = id.pairs)
+    df_norm<-tibble(df_norm)
+    prepare.stats <- load(df_norm, Class, category, paired = paired, 
+        idx = c(classes[1], classes[2]), id_col = id.pairs)
     prepare.stats$y<-quo_set_expr(prepare.stats$y, as.symbol(category))
     print(prepare.stats)
     if (category == "") {
@@ -72,8 +71,7 @@ function (category = "", replicates = 5000, n.seed = 12345,
         print(paste("As you declared no categories, the very first one of your dataset will be 
 	processed!"))
     }
-    estimation.stats<-median_diff(prepare.stats, ci = 95, reps = replicates, 
-        seed = n.seed)
+    estimation.stats<-median_diff(prepare.stats, perm_count = replicates)
     e_plot <- plot(estimation.stats, group.summaries = "median_quartiles", 
         palette = "Set1", rawplot.ylabel = paste(category, "normalized reads", 
             sep = " "), tick.fontsize = 12, axes.title.fontsize = 18)

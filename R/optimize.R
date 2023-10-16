@@ -1,13 +1,12 @@
 optimize <-
 function()
 {
-
 #Loading data
 load("permubiome.RData")
 Class<-NULL
 df_norm<-df_norm
 REFERENCE<-REFERENCE
-classes<-levels(df_norm$Class)
+classes<-levels(as.factor(df_norm$Class))
 if (REFERENCE == ""){
 REFERENCE <- classes[1]
 } else if (REFERENCE == classes[2]){

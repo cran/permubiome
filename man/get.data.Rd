@@ -36,7 +36,7 @@ feature(n)    counts(An)     counts(Bn)     counts(Cn)     counts(Dn)     ...
 get.data()
 }
 \references{
-Benitez-Paez A. 2020. Permubiome: an R package to perform permutation based test for biomarker discovery in microbiome analyses. [https://cran.r-project.org].
+Benitez-Paez A. 2023. Permubiome: an R package to perform permutation based test for biomarker discovery in microbiome analyses. [https://cran.r-project.org].
 Benitez-Paez A, et al. mSystems. 2020;5:e00857-19. doi: 10.1128/mSystems.00857-19.
 }
 \author{
@@ -47,17 +47,17 @@ Alfonso Benitez-Paez
 function () 
 {
     DATA <- readline("Type the name of your data set : ")
-    if (DATA == "") {
+    if (substr(DATA, 1, 1) == ""){
         tb <- read.table(system.file("extdat", "DATA_2", package = "permubiome"), 
             header = T, sep = "\t")
         print(paste("As you declare no input file, the permubiome test data was loaded"))
-        save(tb, file = "permubiome.RData")
+        save(tb, DATA, file = "permubiome.RData")
     }
     else {
         FORMAT <- readline("Type the format of your data set (PERMUBIOME or COLUMN): ")
         if (FORMAT == "PERMUBIOME") {
             tb <- read.table(DATA, header = T, sep = "\t")
-            save(tb, file = "permubiome.RData")
+            save(tb, FORMAT, file = "permubiome.RData")
         }
         else {
             biom <- read.table(DATA, sep = "\t")
@@ -73,16 +73,17 @@ function ()
             save(tb, file = "permubiome.RData")
         }
     }
-    load("permubiome.RData")
+    print("opening DATA")
+    (load("permubiome.RData"))
     df <- as.data.frame(tb)
-    classes <- levels(df$Class)
+    classes <- levels(as.factor(df$Class))
     samples <- nrow(df)
     print(paste("Your data file contains:", samples, "samples"))
     print(paste("The classes in your data file are:", classes[1], 
         "and", classes[2]))
     print(paste("The number of different categories to compare are:", 
         (ncol(tb) - 2)))
-    save(DATA, df, REFERENCE, classes, file = "permubiome.RData")
+    save(tb, FORMAT, DATA, df, REFERENCE, classes, file = "permubiome.RData")
   }
 }
 \keyword{ input }

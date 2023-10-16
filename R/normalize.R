@@ -1,7 +1,6 @@
 normalize <-
 function (prevalence = 0.3, method = 1)
 {
-
 #Loading data
 load("permubiome.RData")
 df_norm<-df

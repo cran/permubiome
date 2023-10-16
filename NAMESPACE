@@ -4,8 +4,9 @@ importFrom("utils", "head", "read.table", "write.table", "combn", "setTxtProgres
 importFrom("ggplot2", "ggplot", "ggsave", "geom_boxplot", "ggtitle", "ylab", "xlab", "theme", "geom_point",
 "element_text", "geom_jitter", "position_jitter", "last_plot", "aes", "scale_fill_manual", "coord_flip", "unit", "geom_bar", "guides", "element_blank", "ylim")
 importFrom("graphics", "plot")
-importFrom("dabestr", "dabest", "median_diff")
+importFrom("dabestr", "load", "median_diff")
 importFrom("grDevices", "dev.off", "tiff")
 importFrom("gridExtra", "grid.arrange")
 importFrom("Matrix", "nnzero")
 importFrom("rlang", "quo_set_expr")
+importFrom("dplyr", "tibble")

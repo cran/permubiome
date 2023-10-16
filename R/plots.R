@@ -5,7 +5,9 @@ Class<-NULL
 non_zero<-NULL
 Occurring<-NULL
 prevalence<-NULL
+ref<-NULL
 loadNamespace("ggplot2")
+loadNamespace("Matrix")
 load("permubiome.RData")
 df_norm <- df_norm
 category <- readline("Type the category you want to plot : ")
@@ -22,17 +24,17 @@ classes[2] <- classes[1]
 classes[1] <- REFERENCE
 }
 df_to_plot$ref <- factor(df_to_plot$Class, levels=(c(classes[1],classes[2])))
-p1<-(ggplot(df_to_plot, aes(df_to_plot$ref, df_to_plot[,category], fill=df_to_plot$Class), environment = environment()))+
+p1<-(ggplot(df_to_plot, aes(ref, df_to_plot[,category], fill=Class), environment = environment()))+
 	geom_boxplot(notch=F, outlier.colour="blue", outlier.shape=1, outlier.size=3)+
 	geom_point(colour="#000000", size=2.5, pch=19)+
 	scale_fill_manual(values=c("#E41A1C", "#377EB8"))+
 	ggtitle(category)+
+	guides(fill=FALSE)+
 	theme(plot.title=element_text(size=24, face="bold"))+
 	ylab("Normalized read proportion")+
 	xlab("Classes")+
 	theme(axis.text=element_text(size=12), axis.title=element_text(size=16,face="bold"))+
 	coord_flip()+
-	guides(fill=FALSE)+
 	theme(plot.margin = unit(c(0.25,0.25,0.25,0.25), "cm"))
 	
 non_zero<-as.data.frame((tapply(df_to_plot[[category]], df_to_plot$ref, nnzero)))

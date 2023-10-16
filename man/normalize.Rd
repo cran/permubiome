@@ -18,7 +18,7 @@ Describes the normalization method to be used. We implemented two different stra
 }
 }
 \references{
-Benitez-Paez A. 2020. Permubiome: an R package to perform permutation based test for biomarker discovery in microbiome analyses. [https://cran.r-project.org].
+Benitez-Paez A. 2023. Permubiome: an R package to perform permutation based test for biomarker discovery in microbiome analyses. [https://cran.r-project.org].
 Benitez-Paez A, et al. mSystems. 2020;5:e00857-19. doi: 10.1128/mSystems.00857-19.
 }
 \author{
